@@ -3,13 +3,14 @@
     display: -ms-flexbox;
     display: flex;
     background-color: $light;
-    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
     margin-top: 0;
     z-index: 1001;
-    @include position(fixed,66px,0,0,null);
+    @include position(fixed,66px,1,0,null);
     @include transition(all 0.5s ease);
     border-left: 1px solid $gray-400;
     width: 260px;
+    left: 0;
     @include respond-below(custom991) {
         margin-right: -575px;
         @include transition(all 0.4s ease);
@@ -555,7 +556,7 @@
             position: absolute;
             opacity: 1;
             background: $primary;
-            left: -13px;
+            left: 13rem;
             border-radius: 50%;
             width: 25px;
             height: 25px;

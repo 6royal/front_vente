@@ -6,7 +6,7 @@ body {
 	background-color: $body-bg;
 	overflow-y: auto;
 	overflow-x: hidden;
-  direction: rtl;
+  direction: ltr;
 }
 ::selection {
   background: $primary;

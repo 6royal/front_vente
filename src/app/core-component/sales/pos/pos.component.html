@@ -1,14 +1,6 @@
 
 <div class="content pos-design p-0">
-  <div class="btn-row d-sm-flex align-items-center">
-    <a href="javascript:void(0);" class="btn btn-secondary mb-xs-3" data-bs-toggle="modal"
-      data-bs-target="#orders"><span class="me-1 d-flex align-items-center"><i
-          class="feather icon-shopping-cart feather-16"></i></span>View Orders</a>
-    <a href="javascript:void(0);" class="btn btn-info"><span class="me-1 d-flex align-items-center"><i
-          class="feather icon-rotate-cw feather-16"></i></span>Reset</a>
-    <a href="javascript:void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recents"><span
-        class="me-1 d-flex align-items-center"><i class="feather icon-refresh-ccw feather-16"></i></span>Transaction</a>
-  </div>
+  
 
   <div class="row align-items-start pos-wrapper">
     <div class="col-md-12 col-lg-8">
@@ -144,224 +136,27 @@
           <div class="tabs_container">
             <div class="tab_content active" data-tab="all">
               <div class="row">
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3">
+                <div *ngFor="let product of products" class="col-sm-2 col-md-6 col-lg-3 col-xl-3" (click)="addToCart(product)">
                   <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-01.png" alt="Products" />
+                    <a href="javascript:void(0);" class="img-bg" >
+                      <img [src]="product.image" [alt]="product.name" />
                       <span><i class="feather icon-check feather-16"></i></span>
                     </a>
                     <h6 class="cat-name">
-                      <a href="javascript:void(0);">Mobiles</a>
+                      <a href="javascript:void(0);">{{ product.category }}</a>
                     </h6>
                     <h6 class="product-name">
-                      <a href="javascript:void(0);">IPhone 14 64GB</a>
+                      <a href="javascript:void(0);">{{ product.name }}</a>
                     </h6>
                     <div class="d-flex align-items-center justify-content-between price">
-                      <span>30 Pcs</span>
-                      <p>$15800</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-02.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Computer</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">MacBook Pro</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>140 Pcs</span>
-                      <p>$1000</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-03.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Rolex Tribute V3</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>220 Pcs</span>
-                      <p>$6800</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-04.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Red Nike Angelo</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>78 Pcs</span>
-                      <p>$7800</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-05.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Headphones</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Airpod 2</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>47 Pcs</span>
-                      <p>$5478</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-06.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Blue White OGR</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>54 Pcs</span>
-                      <p>$987</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-07.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IdeaPad Slim 5 Gen 7</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>74 Pcs</span>
-                      <p>$1454</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-08.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Headphones</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">SWAGME</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$6587</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-09.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Timex Black SIlver</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>24 Pcs</span>
-                      <p>$1457</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-10.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Computer</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Tablet 1.02 inch</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$4744</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-11.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Fossil Pair Of 3 in 1 </a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>40 Pcs</span>
-                      <p>$789</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-18.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Green Nike Fe</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>78 Pcs</span>
-                      <p>$7847</p>
+                      <span>{{ product.qty }} Pcs</span>
+                      <p>${{ product.price }}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            
             <div class="tab_content" data-tab="headphones">
               <div class="row">
                 <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
@@ -382,24 +177,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-08.png" alt="Products" />
-                      <span><i class="feather icon-feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Headphones</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">SWAGME</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$6587</p>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
 
@@ -423,42 +201,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-06.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Blue White OGR</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>54 Pcs</span>
-                      <p>$987</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-18.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Green Nike Fe</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>78 Pcs</span>
-                      <p>$7847</p>
-                    </div>
-                  </div>
-                </div>
+                
+                
               </div>
             </div>
 
@@ -482,24 +226,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-14.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Mobiles</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Iphone 11</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$3654</p>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
 
@@ -523,42 +250,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-09.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Timex Black SIlver</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>24 Pcs</span>
-                      <p>$1457</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-11.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Fossil Pair Of 3 in 1 </a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>40 Pcs</span>
-                      <p>$789</p>
-                    </div>
-                  </div>
-                </div>
+               
               </div>
             </div>
 
@@ -581,79 +273,7 @@
                       <p>$1000</p>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-07.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IdeaPad Slim 5 Gen 7</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>74 Pcs</span>
-                      <p>$1454</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-10.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Computer</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Tablet 1.02 inch</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$4744</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-13.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Yoga Book 9i</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>65 Pcs</span>
-                      <p>$4784</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-14.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IdeaPad Slim 3i</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>47 Pcs</span>
-                      <p>$1245</p>
-                    </div>
-                  </div>
-                </div>
+                </div> 
               </div>
             </div>
 
@@ -677,204 +297,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-02.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Computer</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">MacBook Pro</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>140 Pcs</span>
-                      <p>$1000</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-03.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Rolex Tribute V3</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>220 Pcs</span>
-                      <p>$6800</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-04.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Red Nike Angelo</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>78 Pcs</span>
-                      <p>$7800</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-05.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Headphones</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Airpod 2</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>47 Pcs</span>
-                      <p>$5478</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-06.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Blue White OGR</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>54 Pcs</span>
-                      <p>$987</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-07.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IdeaPad Slim 5 Gen 7</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>74 Pcs</span>
-                      <p>$1454</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-08.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Headphones</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">SWAGME</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$6587</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-09.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Timex Black SIlver</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>24 Pcs</span>
-                      <p>$1457</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-10.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Computer</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Tablet 1.02 inch</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$4744</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-11.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Fossil Pair Of 3 in 1 </a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>40 Pcs</span>
-                      <p>$789</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-18.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Green Nike Fe</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>78 Pcs</span>
-                      <p>$7847</p>
-                    </div>
-                  </div>
-                </div>
+                
+                
+                
+               
+                
+                
+                
+                
               </div>
             </div>
             <div class="tab_content" data-tab="headphone">
@@ -897,24 +327,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-08.png" alt="Products" />
-                      <span><i class="feather icon-feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Headphones</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">SWAGME</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$6587</p>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
 
@@ -938,65 +351,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-06.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Blue White OGR</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>54 Pcs</span>
-                      <p>$987</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-18.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Shoes</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Green Nike Fe</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>78 Pcs</span>
-                      <p>$7847</p>
-                    </div>
-                  </div>
-                </div>
+                
+                
               </div>
             </div>
 
             <div class="tab_content" data-tab="mobile">
               <div class="row">
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-01.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Mobiles</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IPhone 14 64GB</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>30 Pcs</span>
-                      <p>$15800</p>
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
                   <div class="product-info default-cover card">
                     <a href="javascript:void(0);" class="img-bg">
@@ -1038,42 +400,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-09.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Timex Black SIlver</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>24 Pcs</span>
-                      <p>$1457</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-11.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Watches</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Fossil Pair Of 3 in 1 </a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>40 Pcs</span>
-                      <p>$789</p>
-                    </div>
-                  </div>
-                </div>
+                
+                
               </div>
             </div>
 
@@ -1097,90 +425,23 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-07.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IdeaPad Slim 5 Gen 7</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>74 Pcs</span>
-                      <p>$1454</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-10.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Computer</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Tablet 1.02 inch</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>14 Pcs</span>
-                      <p>$4744</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-13.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">Yoga Book 9i</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>65 Pcs</span>
-                      <p>$4784</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-2 col-md-6 col-lg-3 col-xl-3 pe-2">
-                  <div class="product-info default-cover card">
-                    <a href="javascript:void(0);" class="img-bg">
-                      <img src="assets/img/products/pos-product-14.png" alt="Products" />
-                      <span><i class="feather icon-check feather-16"></i></span>
-                    </a>
-                    <h6 class="cat-name">
-                      <a href="javascript:void(0);">Laptop</a>
-                    </h6>
-                    <h6 class="product-name">
-                      <a href="javascript:void(0);">IdeaPad Slim 3i</a>
-                    </h6>
-                    <div class="d-flex align-items-center justify-content-between price">
-                      <span>47 Pcs</span>
-                      <p>$1245</p>
-                    </div>
-                  </div>
-                </div>
+                
+                
+                
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    
     <div class="col-md-12 col-lg-4 ps-0">
       <aside class="product-order-list">
         <div class="head d-flex align-items-center justify-content-between w-100">
           <div class="">
-            <h5>Order List</h5>
-            <span>Transaction ID : #65565</span>
+            <h5>Liste de commande</h5>
+            <span>Numero de transaction ID :# {{transactionID}}</span>
           </div>
           <div class="">
             <a class="confirm-text"  href="javascript:void(0);"><i
@@ -1189,30 +450,15 @@
           </div>
         </div>
         <div class="customer-info block-section">
-          <h6>Customer Information</h6>
+          <h6>information sur le client </h6>
           <div class="input-block d-flex align-items-center">
             <div class="flex-grow-1">
-              <mat-select [(ngModel)]="selectedValue1" [ngModelOptions]="{ standalone: true }" class="select"
-                placeholder="Walk in Customer">
-                @for (data of selectedList1; track data) {
-                <mat-option [value]="data.value">
-                  {{ data.value }}
-                </mat-option>
-                }
-              </mat-select>
+              <input type="text" [(ngModel)]="selectedValue1" class="form-control select" placeholder="Nom et prénoms du client ">
+              
             </div>
-            <a href="javascript:void(0);" class="btn btn-primary btn-icon" data-bs-toggle="modal"
-              data-bs-target="#create"><i class="feather icon-user-plus feather-16"></i></a>
           </div>
           <div class="input-block">
-            <mat-select [(ngModel)]="selectedValue2" [ngModelOptions]="{ standalone: true }" class="select"
-              placeholder="Search Products">
-              @for (data of selectedList2; track data) {
-              <mat-option [value]="data.value">
-                {{ data.value }}
-              </mat-option>
-              }
-            </mat-select>
+            <input type="text" [(ngModel)]="selectedValue2" class="form-control select" placeholder="Contact du client">
           </div>
         </div>
 
@@ -1224,130 +470,39 @@
             <a href="javascript:void(0);" class="d-flex align-items-center text-danger"><span class="me-1"><i
                   class="feather icon-x feather-16"></i></span>Clear all</a>
           </div>
+
+
           <div class="product-wrap">
-            <div class="product-list d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center product-info" data-bs-toggle="modal" data-bs-target="#products">
+            <div *ngFor="let cartProduct of cartProducts; let i = index" class="product-list d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center product-info">
                 <a href="javascript:void(0);" class="img-bg">
-                  <img src="assets/img/products/pos-product-16.png" alt="Products" />
+                  <img [src]="cartProduct.image" [alt]="cartProduct.name" />
                 </a>
                 <div class="info">
-                  <span>PT0005</span>
-                  <h6><a href="javascript:void(0);">Red Nike Laser</a></h6>
-                  <p>$2000</p>
-                </div>
-              </div>
-              <div class="qty-item text-center">
-                <a  href="javascript:void(0);" class="dec d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="minus" (click)="reducePos(0)"  matTooltip="minus"
-                  matTooltipPosition="above"
-><i
-                    class="feather icon-minus-circle feather-14"></i></a>
-                <input type="text" class="form-control text-center" name="qty" value="4"  [(ngModel)]="cartValue[0]"/>
-                <a  href="javascript:void(0);" class="inc d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="plus"  matTooltip="plus"   matTooltipPosition="above" (click)="addPos(0)"><i
-                    class="feather icon-plus-circle feather-14"></i></a>
-              </div>
-              <div class="d-flex align-items-center action">
-                <a class="btn-icon edit-icon me-2" href="javascript:void(0);" data-bs-toggle="modal"
-                  data-bs-target="#edit-product">
-                  <i class="feather icon-edit feather-14"></i>
-                </a>
-                <a class="btn-icon delete-icon confirm-text" href="javascript:void(0);" (click)="confirmColor()" >
-                  <i class="feather icon-trash-2 feather-14"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-list d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center product-info" data-bs-toggle="modal" data-bs-target="#products">
-                <a href="javascript:void(0);" class="img-bg">
-                  <img src="assets/img/products/pos-product-17.png" alt="Products" />
-                </a>
-                <div class="info">
-                  <span>PT0235</span>
-                  <h6><a href="javascript:void(0);">Iphone 14</a></h6>
-                  <p>$3000</p>
+                  <span>ID{{ cartProduct.id }}</span>
+                  <h6>{{ cartProduct.name }}</h6>
+                  <p>${{ cartProduct.price * cartProduct.qty }}</p>
                 </div>
               </div>
               <div class="qty-item text-center">
                 <a href="javascript:void(0);" class="dec d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="minus" (click)="reducePos(1)" matTooltip="minus"   matTooltipPosition="above"><i
-                    class="feather icon-minus-circle feather-14"></i></a>
-                <input type="text" class="form-control text-center" name="qty" value="3" [(ngModel)]="cartValue[1]"/>
+                   (click)="decreaseQuantity(i)">
+                  <i class="feather icon-minus-circle feather-14"></i>
+                </a>
+                <input type="text" class="form-control text-center" [value]="cartProduct.qty" readonly />
                 <a href="javascript:void(0);" class="inc d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="plus" (click)="addPos(1)" matTooltip="plus"   matTooltipPosition="above"><i
-                    class="feather icon-plus-circle feather-14"></i></a>
+                   (click)="increaseQuantity(i)">
+                  <i class="feather icon-plus-circle feather-14"></i>
+                </a>
               </div>
               <div class="d-flex align-items-center action">
-                <a class="btn-icon edit-icon me-2" href="javascript:void(0);" data-bs-toggle="modal"
-                  data-bs-target="#edit-product">
-                  <i class="feather icon-edit feather-14"></i>
-                </a>
-                <a class="btn-icon delete-icon confirm-text" href="javascript:void(0); " (click)=confirmColor() >
-                  <i class="feather icon-trash-2 feather-14"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-list d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center product-info" data-bs-toggle="modal" data-bs-target="#products">
-                <a href="javascript:void(0);" class="img-bg">
-                  <img src="assets/img/products/pos-product-16.png" alt="Products" />
-                </a>
-                <div class="info">
-                  <span>PT0005</span>
-                  <h6><a href="javascript:void(0);">Red Nike Laser</a></h6>
-                  <p>$2000</p>
-                </div>
-              </div>
-              <div class="qty-item text-center">
-                <a href="javascript:void(0);" class="dec d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="minus" (click)="reducePos(1)" matTooltip="minus"   matTooltipPosition="above"><i
-                    class="feather icon-minus-circle feather-14"></i></a>
-                <input type="text" class="form-control text-center" name="qty" value="3" [(ngModel)]="cartValue[1]"/>
-                <a href="javascript:void(0);" class="inc d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="plus" (click)="addPos(1)" matTooltip="plus"   matTooltipPosition="above"><i
-                    class="feather icon-plus-circle feather-14"></i></a>
-              </div>
-              <div class="d-flex align-items-center action">
-                <a class="btn-icon edit-icon me-2" href="javascript:void(0);" data-bs-toggle="modal"
-                  data-bs-target="#edit-product">
-                  <i  class="feather icon-edit feather-14"></i>
-                </a>
-                <a class="btn-icon delete-icon confirm-text" href="javascript:void(0); confirmColor()" >
-                  <i  class="feather icon-trash-2 feather-14" (click)=confirmColor()></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-list d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center product-info" data-bs-toggle="modal" data-bs-target="#products">
-                <a href="javascript:void(0);" class="img-bg">
-                  <img src="assets/img/products/pos-product-17.png" alt="Products" />
-                </a>
-                <div class="info">
-                  <span>PT0005</span>
-                  <h6><a href="javascript:void(0);">Red Nike Laser</a></h6>
-                  <p>$2000</p>
-                </div>
-              </div>
-              <div class="qty-item text-center">
-                <a  href="javascript:void(0);" class="dec d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="minus" (click)="reducePos(0)" matTooltip="minus"   matTooltipPosition="above"><i
-                    class="feather icon-minus-circle feather-14"></i></a>
-                <input type="text" class="form-control text-center" name="qty" value="4"  [(ngModel)]="cartValue[0]"/>
-                <a  href="javascript:void(0);" class="inc d-flex justify-content-center align-items-center"
-                  data-bs-toggle="tooltip" data-bs-placement="top" title="plus"  (click)="addPos(0)" matTooltip="plus"   matTooltipPosition="above"><i
-                    class="feather icon-plus-circle feather-14"></i></a>
-              </div>
-              <div class="d-flex align-items-center action">
-                <a class="btn-icon edit-icon me-2" href="javascript:void(0);" data-bs-toggle="modal"
-                  data-bs-target="#edit-product">
-                  <i class="feather icon-edit feather-14"></i>
-                </a>
-                <a class="btn-icon delete-icon confirm-text" href="javascript:void(0);" (click)=confirmColor()>
+                <a class="btn-icon delete-icon confirm-text" href="javascript:void(0);" (click)="removeFromCart(i)">
                   <i class="feather icon-trash-2 feather-14"></i>
                 </a>
               </div>
             </div>
           </div>
+          
         </div>
         <div class="block-section">
           <div class="selling-info">
@@ -1355,80 +510,62 @@
               <div class="col-12 col-sm-4">
                 <div class="input-block">
                   <label>Order Tax</label>
-
-                  <mat-select [(ngModel)]="selectedValue3" [ngModelOptions]="{ standalone: true }" class="select"
-                    placeholder="GST 5%">
-                    @for (data of selectedList3; track data) {
-                    <mat-option [value]="data.value">
-                      {{ data.value }}
+                  <mat-select [(ngModel)]="selectedValue3" [ngModelOptions]="{ standalone: true }" class="select">
+                    <mat-option *ngFor="let data of [5, 10, 15]" [value]="data">
+                      {{ data }}%
                     </mat-option>
-                    }
                   </mat-select>
                 </div>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="input-block">
                   <label>Shipping</label>
-
-                  <mat-select [(ngModel)]="selectedValue4" [ngModelOptions]="{ standalone: true }" class="select"
-                    placeholder="15">
-                    @for (data of selectedList4; track data) {
-                    <mat-option [value]="data.value">
-                      {{ data.value }}
+                  <mat-select [(ngModel)]="selectedValue4" [ngModelOptions]="{ standalone: true }" class="select">
+                    <mat-option *ngFor="let data of [10, 15, 20]" [value]="data">
+                      ${{ data }}
                     </mat-option>
-                    }
                   </mat-select>
                 </div>
               </div>
               <div class="col-12 col-sm-4">
                 <div class="input-block">
                   <label>Discount</label>
-
-                  <mat-select [(ngModel)]="selectedValue5" [ngModelOptions]="{ standalone: true }" class="select"
-                    placeholder="10%">
-                    @for (data of selectedList5; track data) {
-                    <mat-option [value]="data.value">
-                      {{ data.value }}
+                  <mat-select [(ngModel)]="selectedValue5" [ngModelOptions]="{ standalone: true }" class="select">
+                    <mat-option *ngFor="let data of [5, 10, 15]" [value]="data">
+                      {{ data }}%
                     </mat-option>
-                    }
                   </mat-select>
                 </div>
               </div>
             </div>
           </div>
-          <div class="order-total  table-responsive">
+          <div class="order-total table-responsive">
             <table class="table table-borderless">
               <tbody>
                 <tr>
                   <td>Sub Total</td>
-                  <td class="text-end">$60,454</td>
+                  <td class="text-end">${{ subTotal | number: '1.2-2' }}</td>
                 </tr>
                 <tr>
-                  <td>Tax (GST 5%)</td>
-                  <td class="text-end">$40.21</td>
+                  <td>Tax ({{ selectedValue3 }}%)</td>
+                  <td class="text-end">${{ taxAmount | number: '1.2-2' }}</td>
                 </tr>
                 <tr>
                   <td>Shipping</td>
-                  <td class="text-end">$40.21</td>
+                  <td class="text-end">${{ shipping | number: '1.2-2' }}</td>
                 </tr>
                 <tr>
-                  <td>Sub Total</td>
-                  <td class="text-end">$60,454</td>
-                </tr>
-                <tr>
-                  <td class="danger">Discount (10%)</td>
-                  <td class="danger text-end">$15.21</td>
+                  <td class="danger">Discount ({{ selectedValue5 }}%)</td>
+                  <td class="danger text-end">-${{ discountAmount | number: '1.2-2' }}</td>
                 </tr>
                 <tr>
                   <td>Total</td>
-                  <td class="text-end">$64,024.5</td>
+                  <td class="text-end">${{ total | number: '1.2-2' }}</td>
                 </tr>
               </tbody>
-              
             </table>
           </div>
-        </div>
-
+        </div> 
         <div class="block-section payment-method">
           <h6>Payment Method</h6>
           <div class="row d-flex align-items-center justify-content-center methods">
@@ -1460,7 +597,7 @@
         </div>
         <div class="d-grid btn-block">
           <a class="btn btn-secondary" href="javascript:void(0);">
-            Grand Total : $64,024.5
+            ${{ total | number: '1.2-2' }}
           </a>
         </div>
         <div class="btn-row d-sm-flex align-items-center justify-content-between">
@@ -1536,18 +673,18 @@
           <div class="row">
             <div class="col-sm-12 col-md-6">
               <div class="invoice-user-name">
-                <span>Name: </span><span>John Doe</span>
+                <span>Name: </span><span>{{selectedValue1}}</span>
               </div>
               <div class="invoice-user-name">
-                <span>Invoice No: </span><span>CS132453</span>
+                <span>Reçu N°: </span><span>{{transactionID}}</span>
               </div>
             </div>
             <div class="col-sm-12 col-md-6">
               <div class="invoice-user-name">
-                <span>Customer Id: </span><span>#LL93784</span>
+                <span>Contact: </span><span>{{selectedValue2}}</span>
               </div>
               <div class="invoice-user-name">
-                <span>Date: </span><span>01.07.2022</span>
+                <span>Date: </span><span>{{formattedDate}}</span>
               </div>
             </div>
           </div>
@@ -1562,46 +699,36 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1. Red Nike Laser</td>
-              <td>$50</td>
-              <td>3</td>
-              <td class="text-end">$150</td>
+            <tr *ngFor="let product of cartProducts">
+              <td>{{ product.name }}</td>
+              <td>{{ product.qty }}</td>
+              <td>${{ product.price }}</td>
+              <td>${{ product.price * product.qty }}</td>
             </tr>
-            <tr>
-              <td>2. Iphone 14</td>
-              <td>$50</td>
-              <td>2</td>
-              <td class="text-end">$100</td>
-            </tr>
-            <tr>
-              <td>3. Apple Series 8</td>
-              <td>$50</td>
-              <td>3</td>
-              <td class="text-end">$150</td>
-            </tr>
+
+           
             <tr>
               <td colspan="4">
                 <table class="table-borderless w-100 table-fit">
                   <tr>
                     <td>Sub Total :</td>
-                    <td class="text-end">$700.00</td>
+                    <td class="text-end"> ${{ subTotal | number: '1.2-2' }}</td>
                   </tr>
                   <tr>
-                    <td>Discount :</td>
-                    <td class="text-end">-$50.00</td>
+                    <td>Discount({{ selectedValue5 }}%):</td>
+                    <td class="text-end">-${{ discountAmount | number: '1.2-2' }}</td>
                   </tr>
                   <tr>
                     <td>Shipping :</td>
-                    <td class="text-end">0.00</td>
+                    <td class="text-end">${{ shipping | number: '1.2-2' }}</td>
                   </tr>
                   <tr>
-                    <td>Tax (5%) :</td>
-                    <td class="text-end">$5.00</td>
+                    <td>Tax ({{ selectedValue3 }}%):</td>
+                    <td class="text-end">${{ taxAmount | number: '1.2-2' }}</td>
                   </tr>
                   <tr>
-                    <td>Total Bill :</td>
-                    <td class="text-end">$655.00</td>
+                    <td>Total  :</td>
+                    <td class="text-end"></td>
                   </tr>
                   <tr>
                     <td>Due :</td>
@@ -1609,7 +736,7 @@
                   </tr>
                   <tr>
                     <td>Total Payable :</td>
-                    <td class="text-end">$655.00</td>
+                    <td class="text-end">${{ total | number: '1.2-2' }}</td>
                   </tr>
                 </table>
               </td>
@@ -1626,7 +753,7 @@
           </a>
           <p>Sale 31</p>
           <p>Thank You For Shopping With Us. Please Come Again</p>
-          <a href="javascript:void(0);" class="btn btn-primary">Print Receipt</a>
+          <a href="javascript:void(0);" class="btn btn-primary" (click)="printReceipt()">Print Receipt</a>
         </div>
       </div>
     </div>

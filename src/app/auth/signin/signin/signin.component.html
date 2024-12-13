@@ -1,7 +1,7 @@
 <div class="account-content">
     <div class="login-wrapper bg-img">
         <div class="login-content">
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
                 <div class="login-userset">
                     <div class="login-logo logo-normal">
                        <img src="assets/img/logo.png" alt="img">
@@ -10,20 +10,21 @@
                        <img src="assets/img/logo-white.png"  alt="">
                    </a>
                    <div class="login-userheading">
-                       <h3>Sign In</h3>
-                       <h4>Access the Dreamspos panel using your email and passcode.</h4>
+                       <h3>Connectez vous</h3>
+                       <h4></h4>
                    </div>
+                   
                    <div class="form-login mb-3">
-                       <label class="form-label">Email Address</label>
+                       <label class="form-label">Nom d'utilisateur</label>
                        <div class="form-addons">
-                           <input type="text" class="form- control">
+                           <input type="text" class="form- control" id="email" formControlName="email" >
                            <img src="assets/img/icons/mail.svg" alt="img">
                        </div>
                    </div>
                    <div class="form-login mb-3">
-                       <label class="form-label">Password</label>
+                       <label class="form-label">Mot de passe</label>
                        <div class="pass-group">
-                        <input [type]="password[1] ? 'text' : 'password' " class="pass-input">
+                        <input [type]="password[1] ? 'text' : 'password' " class="pass-input" id="password" formControlName="password">
                         <span class="fas toggle-password" [ngClass]=" password[1] ? 'fa-eye' : 'fa-eye-slash'" (click)="togglePassword(1)"></span>
                     </div>
                    </div>
@@ -33,45 +34,35 @@
                                <div class="custom-control custom-checkbox custom-class-check">
                                    <label class="checkboxs ps-4 mb-0 pb-0 line-height-1">
                                        <input type="checkbox" class="form-control">
-                                       <span class="checkmarks"></span>Remember me
+                                       <span class="checkmarks"></span>Se rappeler
                                    </label>
                                </div>
                                <div class="text-end">
-                                   <a class="forgot-link" [routerLink] = "routes.forgotPassword">Forgot Password?</a>
+                                   <a class="forgot-link" [routerLink] = "routes.forgotPassword">Mot de passe oublié?</a>
                                </div>
                            </div>                                    
                        </div>
                    </div>
                    <div class="form-login">
-                       <button type="button" class="btn btn-login" (click)="navigation()">Sign In</button>
+                       <button type="submit" class="btn btn-login" [disabled]="loginForm.invalid">Sign In</button>
                    </div>
-                   <div class="signinform">
-                       <h4>New on our platform?<a [routerLink] = "routes.register" class="hover-a"> Create an account</a></h4>
-                   </div>
-                   <div class="form-setlogin or-text">
-                       <h4>OR</h4>
-                   </div>
+                   
                    <div class="form-sociallink">
                        <ul class="d-flex">
                            <li>
-                               <a href="javascript:void(0);" class="facebook-logo">
-                                   <img src="assets/img/icons/facebook-logo.svg" alt="Facebook">
-                               </a>
+                               
                            </li>
                            <li>
-                               <a href="javascript:void(0);">
-                                   <img src="assets/img/icons/google.png" alt="Google">
-                               </a>
+                             
                            </li>
                            <li>
-                               <a href="javascript:void(0);" class="apple-logo">
-                                   <img src="assets/img/icons/apple-logo.svg" alt="Apple">
-                               </a>
+                              
+                            
                            </li>
                            
                        </ul>
                        <div class="my-4 d-flex justify-content-center align-items-center copyright-text">
-                           <p>Copyright &copy; 2023 DreamsPOS. All rights reserved</p>
+                           <p>Copyright &copy; 2024 6royal. All rights reserved</p>
                        </div>
                    </div>
                </div>

@@ -8,9 +8,20 @@ import { routes } from 'src/app/core/helpers/routes';
 import { pospurchase } from 'src/app/shared/model/page.model';
 import { PaginationService, tablePageSize } from 'src/app/shared/shared.index';
 import Swal from 'sweetalert2';
+import { BrowserQRCodeReader } from '@zxing/library';
+import { ProdutService } from 'src/app/service/product/produt.service';
 interface data {
   value: string;
 }
+export interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  qty: number;
+  image: string;
+}
+
 
 @Component({
   selector: 'app-pos',
@@ -18,11 +29,111 @@ interface data {
   styleUrl: './pos.component.scss'
 })
 export class PosComponent {
+  
+  transactionID: number=1 ;
+   today = new Date(); // Récupération de la date du jour
+  formattedDate = this.today.toISOString().split('T')[0];
+
+  products: Product[] = [
+    { id: 1, name: 'IPhone 14 64GB', category: 'Mobiles', price: 15800, qty: 30, image: 'assets/img/products/pos-product-01.png' },
+    { id: 2, name: 'IPhone 16 64GB', category: 'Mobiles', price: 20800, qty: 30, image: 'assets/img/products/pos-product-01.png' },
+  ];
+
+  selectedValue3 = 5; // Default GST in percentage
+  selectedValue4 = 15; // Default shipping cost
+  selectedValue5 = 10; // Default discount in percentage
+  get subTotal(): number {
+    return this.cartProducts.reduce((acc, product) => acc + product.price * product.qty, 0);
+  }
+
+  get taxAmount(): number {
+    return (this.subTotal * this.selectedValue3) / 100;
+  }
+
+  get shipping(): number {
+    return this.selectedValue4;
+  }
+
+  get discountAmount(): number {
+    return (this.subTotal * this.selectedValue5) / 100;
+  }
+
+  get total(): number {
+    return this.subTotal + this.taxAmount + this.shipping - this.discountAmount;
+  }
+
+  cartProducts: Product[] = [];
+
+  allProduct(){
+
+  }
+
+  addToCart(product: Product): void {
+    const existingProduct = this.cartProducts.find(item => item.id === product.id);
+    if (existingProduct) {
+      existingProduct.qty++;
+    } else {
+      this.cartProducts.push({ ...product, qty: 1 });
+    }
+  }
+
+  removeFromCart(index: number): void {
+    this.cartProducts.splice(index, 1);
+  }
+
+  increaseQuantity(index: number): void {
+    this.cartProducts[index].qty++;
+  }
+
+  decreaseQuantity(index: number): void {
+    if (this.cartProducts[index].qty > 1) {
+      this.cartProducts[index].qty--;
+    }
+  }
+
+  printReceipt(): void {
+    const printContents = document.getElementById('print-receipt')?.innerHTML;
+    const originalContents = document.body.innerHTML;
+  
+    if (printContents) {
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+      location.reload(); // Recharge la page pour restaurer l'état initial.
+    }
+  }
+
+  getTransactionID(): number {
+    const transactionID = localStorage.getItem('transactionID');
+        return transactionID ? parseInt(transactionID, 10) : 1; // ID de départ
+}
+private saveTransactionID(transactionID: number): void {
+  localStorage.setItem('transactionID', transactionID.toString());
+}
+private enregistrerTransaction(): number {
+  this.transactionID++; // Incrémente l'ID
+  this.saveTransactionID(this.transactionID); // Enregistre le nouvel ID
+  console.log('Transaction ID:', this.transactionID);
+  return this.transactionID; // Retourne le nouvel ID
+}
+generateBarcode(data: string, elementId: string) {
+  const qrCodeReader = new BrowserQRCodeReader();
+
+  qrCodeReader.decodeFromInputVideoDevice(undefined, elementId)
+    .then((result) => {
+      console.log('Code-barres généré :', result.getText());
+    })
+    .catch((error) => {
+      console.error('Erreur lors de la génération du code-barres', error);
+    });
+}
+
+// Appel de la fonction pour générer le code-barres
+
+
   public selectedValue1 = '';
   public selectedValue2 = '';
-  public selectedValue3 = '';
-  public selectedValue4 = '';
-  public selectedValue5 = '';
+
   public selectedValue6 = '';
   public selectedValue7 = '';
   public selectedValue8 = '';
@@ -90,8 +201,9 @@ export class PosComponent {
     nav: true,
     rtl: true,
     navText: [
-      '<i class="fas fa-chevron-left"></i>',
       '<i class="fas fa-chevron-right"></i>',
+      '<i class="fas fa-chevron-left"></i>',
+      
     ],
     loop: false,
     touchDrag: false,
@@ -144,7 +256,8 @@ export class PosComponent {
     private data: DataService,
     private pagination: PaginationService,
     private router: Router,
-    private sidebar: SidebarService
+    private sidebar: SidebarService,
+    private productService:ProdutService
   ) {
     this.data.getPosPurchase().subscribe((apiRes: apiResultFormat) => {
       this.totalData = apiRes.totalData;
@@ -295,9 +408,10 @@ export class PosComponent {
       }
     })
   }
-  // public ngAfterViewInit(): void {
-  //   window.dispatchEvent(new Event('resize'));
-  // }
+   ngOnInit(): void {
+   window.dispatchEvent(new Event('resize'));
+   this.generateBarcode("this.transactionID.toString()",'barcode-container');
+  }
 }
 
 

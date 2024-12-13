@@ -121,6 +121,6 @@ input[type=email] {
         color: $gray-600;
         font-size: $font-size-base;
         @include rounded(50%);
-        @include position(absolute,50%,null,null,10px);
+        @include position(absolute,50%,null,null,null);
     }
 }

@@ -40,8 +40,9 @@
         justify-content: space-between;
         -webkit-justify-content: space-between;
         -ms-flex-pack: space-between;
-        float: right;
+        float: left;
         height: 66px;
+        left: 0px;
         position: relative;
         text-align: center;
         width: 260px;
@@ -74,9 +75,7 @@
     }
 
     @include respond-below(custom991) {
-       .header-left #toggle_btn {
-            display: none;
-        }
+        
     }
     @include respond-above(custom991) {
         #toggle_btn {
@@ -127,7 +126,7 @@
     }
     .mobile_btn {
         display: none;
-        float: right;
+        float: left;
         @include respond-below(custom991) {
             color: $primary;
             font-size: $font-size-24;

@@ -30,6 +30,7 @@
     "@fullcalendar/timegrid": "^6.1.9",
     "@fullcalendar/web-component": "^6.1.9",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "@zxing/library": "^0.21.3",
     "angular-feather": "^6.5.1",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",

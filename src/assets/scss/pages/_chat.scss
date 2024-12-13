@@ -1806,85 +1806,63 @@
 	-webkit-flex-direction: column;
 	flex: 1;
 }
-.right-sidebar {
-	display: flex;
-	display: -webkit-flex;
-	flex-direction: column;
-	-webkit-flex-direction: column;
-	background-color: $light;
-	opacity: 100%;
-	transition: all .5s ease;
-	-webkit-transition: all .5s ease;
-	-ms-transition: all .5s ease;
-	position: relative;
-	width: 320px;
-	.right-sidebar-wrap {
-		background-color: $white;
-		border-left: 1px solid #E0E0E0;
-		border-radius: 0px;
-		margin-top: 0px;
-		margin-bottom: 0px;
-		height: calc(100vh - 0px);
-		.sidebar-body {
-			padding: 0;
-		}
-		.right-sidebar-profile {
-			padding: 24px;
-			padding-bottom: 0;
-			margin-bottom: 15px;
-		}
-	}
-	.contact-close_call {
-		.close_profile {
-			width: 25px;
-			height: 25px;
-			border-radius: 25px;
-			color: $gray-900;
-			display: flex;
-			display: -webkit-flex;
-			justify-content: center;
-			-webkit-justify-content: center;
-			align-items: center;
-			-webkit-align-items: center;
-			&.close-star {
-				color: $warning;
-			}
-			&.close-trash {
-				color: $danger;
-			}
-		}
-	}
+.left-sidebar {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    background-color: $light;
+    opacity: 100%;
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    position: fixed; // Utiliser fixed pour la fixer à l'écran
+    left: 0; // Pour la positionner à gauche
+    top: 0; // Pour la fixer en haut de la page
+    width: 320px;
+    height: 100vh; // Pour qu'elle occupe toute la hauteur de la page
+
+    .left-sidebar-wrap {
+        background-color: $white;
+        border-right: 1px solid #E0E0E0; // Utiliser border-right au lieu de border-left
+        border-radius: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 100%; // Pour occuper toute la hauteur de la sidebar
+
+        .sidebar-body {
+            padding: 0;
+        }
+
+        .left-sidebar-profile {
+            padding: 24px;
+            padding-bottom: 0;
+            margin-bottom: 15px;
+        }
+    }
+
+    .contact-close_call {
+        .close_profile {
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
+            color: $gray-900;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+            &.close-star {
+                color: $warning;
+            }
+            &.close-trash {
+                color: $danger;
+            }
+        }
+    }
 }
-.right-sidebar.video-right-sidebar {
-	width: 371px;
-	.chat {
-		.chat-body {
-			padding-bottom: 110px;
-		}
-		margin-right: 0 !important;
-		display: block;
-	}
-}
-.video-call-chat {
-	.left-chat-title.with-bg {
-		background: transparent;
-	}
-	.left-chat-title {
-		border: 0;
-	}
-	.chat-title {
-		h4 {
-			font-size: $font-size-18;
-			font-weight: $font-weight-semibold;
-			color: $gray-900;
-		}
-		span {
-			font-size: 12px;
-			font-weight: $font-weight-normal;
-			color: $gray-900;
-		}
-	}
-}
+
 .chat.video-call-chat {
 	.chat-body {
 		background-image: none;

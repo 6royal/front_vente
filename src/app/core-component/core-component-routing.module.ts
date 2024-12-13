@@ -7,21 +7,13 @@ const routes: Routes = [
     path: '',
     component: CoreComponentComponent,
     children: [
-      {
-        path: 'charts',
-        loadChildren: () =>
-          import('./charts/charts.module').then((m) => m.ChartsModule),
-      },
+     
       {
         path: 'icons',
         loadChildren: () =>
           import('./icons/icons.module').then((m) => m.IconsModule),
       },
-      {
-        path: 'forms',
-        loadChildren: () =>
-          import('./forms/forms.module').then((m) => m.FormsModule),
-      },
+     
       {
         path: 'table',
         loadChildren: () =>
@@ -34,27 +26,9 @@ const routes: Routes = [
             (m) => m.ApplicationModule
           ),
       },
-      {
-        path: 'base-ui',
-        loadChildren: () =>
-          import('./base-ui/base-ui.module').then((m) => m.BaseUiModule),
-      },
-      {
-        path: 'advanced-ui',
-        loadChildren: () =>
-          import('./advanced-ui/advanced-ui.module').then(
-            (m) => m.AdvancedUiModule
-          ),
-      },
-      {
-        path: 'hrm',
-        loadChildren: () => import('./hrm/hrm.module').then((m) => m.HrmModule),
-      },
-      {
-        path: 'promo',
-        loadChildren: () =>
-          import('./promo/promo.module').then((m) => m.PromoModule),
-      },
+     
+      
+    
       {
         path: 'inventory',
         loadChildren: () =>
@@ -94,21 +68,9 @@ const routes: Routes = [
         loadChildren: () =>
           import('./stock/stock.module').then((m) => m.StockModule),
       },
-      {
-        path: 'purchase',
-        loadChildren: () =>
-          import('./purchase/purchase.module').then((m) => m.PurchaseModule),
-      },
-      {
-        path: 'expense',
-        loadChildren: () =>
-          import('./expense/expense.module').then((m) => m.ExpenseModule),
-      },
-      {
-        path: 'people',
-        loadChildren: () =>
-          import('./people/people.module').then((m) => m.PeopleModule),
-      },
+      
+      
+     
       {
         path: 'reports',
         loadChildren: () =>

@@ -241,7 +241,7 @@ body {
     color: #797979;
   }
 
-  .fc-header-toolbar.fc-toolbar .fc-button,
+  .fc--toolbar.fc-toolbar .fc-button,
   .fc-header-toolbar.fc-toolbar .fc-button:active {
     background-color: #f1f1f1;
     border: 0 none;
@@ -1937,7 +1937,7 @@ body .mini-sidebar .nav-dark .header-left .logo-white {
 }
 
 .expand-menu .collapsed .sidebar.collapsed-sidebar .sidebar-menu ul li a::before {
-  right: 0;
+  right: 1;
 }
 
 .chat-page-custom mat-tooltip-component .mat-mdc-tooltip .mdc-tooltip__surface {
@@ -2091,7 +2091,7 @@ body .box .page-wrapper .content {
 }
 
 ng-scrollbar .ng-scrollbar-wrapper {
-  direction: rtl;
+  direction: ltr;
 }
 
 .sidebar .sidebar-menu>ul>li i,
