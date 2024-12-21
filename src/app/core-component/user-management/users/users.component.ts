@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import {
   pageSelection,
   apiResultFormat,
   SidebarService,
+ 
 } from 'src/app/core/core.index';
 import { routes } from 'src/app/core/helpers/routes';
 import { users } from 'src/app/shared/model/page.model';
@@ -17,7 +18,7 @@ import Swal from 'sweetalert2';
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   initChecked = false;
   selectedValue1 = '';
   selectedValue2 = '';
@@ -54,7 +55,17 @@ export class UsersComponent {
       });
     });
   }
+  ngOnInit(): void {
+   this.getAllUsers();
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  selectedUser: any = {}; // Stockera l'utilisateur sélectionné
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  editUser(user: any): void {
+    this.selectedUser = { ...user };
+    console.log(this.selectedUser) // Clone l'utilisateur sélectionné
+  }
   private getTableData(pageOption: pageSelection): void {
     this.data.getUsers().subscribe((apiRes: apiResultFormat) => {
       this.tableData = [];
@@ -138,6 +149,17 @@ export class UsersComponent {
         }
       });
   }
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  AllUser : any[]=[]
+   
+ private getAllUsers(){
+  return this.data.getAllUser().subscribe(data=>{
+    this.AllUser=data
+    console.log(this.AllUser)
+  })
+ }
+
 
   public password : boolean[] = [false];
 

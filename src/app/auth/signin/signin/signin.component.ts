@@ -16,7 +16,7 @@ import { JwtService } from 'src/app/service/jwt-service.service';
 export class SigninComponent implements OnInit {
   public routes = routes;
   loginForm!: FormGroup;
-  constructor(private router: Router, private fb:FormBuilder , private jwtservice : JwtService) {}
+  constructor(private router: Router , private fb:FormBuilder , private jwtservice : JwtService){}
 
 
 ngOnInit(): void{
@@ -28,13 +28,16 @@ ngOnInit(): void{
 
 submitForm() {
   console.log()
+  
   this.jwtservice.login(this.loginForm.value).subscribe(
     (response) => { // Utilisation explicite
       console.log(response);
       if (response != null) {
       
         const jwtToken = response;
+        
         localStorage.setItem('jwt', jwtToken);
+        localStorage.setItem('userEmail',this.loginForm.getRawValue().email)
         this.router.navigate([routes.adminDashboard]);
       }
     },

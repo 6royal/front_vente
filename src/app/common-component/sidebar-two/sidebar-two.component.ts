@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationStart, Router, Event as RouterEvent } from '@angular/router';
-import { SidebarService } from 'src/app/core/core.index';
+import { DataService, SidebarService } from 'src/app/core/core.index';
 
 @Component({
   selector: 'app-sidebar-two',
@@ -14,7 +14,7 @@ export class SidebarTwoComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public sidebarData: Array<any> = [];
 
-  constructor(private sidebar: SidebarService, private router: Router) {
+  constructor(private sidebar: SidebarService, private router: Router ,private data : DataService) {
     this.activePath = this.router.url.split('/')[1];
     this.router.events.subscribe((data: RouterEvent) => {
       if (data instanceof NavigationStart) {
@@ -52,4 +52,7 @@ export class SidebarTwoComponent {
       this.sidebar.expandSideBar.next(false);
     }
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 }

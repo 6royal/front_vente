@@ -17,7 +17,7 @@ export class PosSettingsComponent {
   ];
   constructor(private sidebar: SidebarService) {}
 
-  isCollapsed: boolean = false;
+  isCollapsed: boolean = true;
   toggleCollapse() {
     this.sidebar.toggleCollapse();
     this.isCollapsed = !this.isCollapsed;

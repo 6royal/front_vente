@@ -1,8 +1,8 @@
 <div class="page-header">
   <div class="add-item d-flex">
     <div class="page-title">
-      <h4>Product List</h4>
-      <h6>Manage your products</h6>
+      <h4>Liste de porduits</h4>
+      <h6>Gerer Vos Produits</h6>
     </div>
   </div>
   <ul class="table-top-head">
@@ -15,11 +15,11 @@
       src="assets/img/icons/excel.svg" alt="img"></a>
     </li>
     <li>
-      <a data-bs-toggle="tooltip" data-bs-placement="top" matTooltip="Print" matTooltipPosition="above"><i
+      <a data-bs-toggle="tooltip" data-bs-placement="top" matTooltip="Imprimer" matTooltipPosition="above"><i
       class="feather icon-printer feather-rotate-ccw"></i></a>
     </li>
     <li>
-      <a data-bs-toggle="tooltip" data-bs-placement="top" matTooltip="Refresh" matTooltipPosition="above"><i
+      <a data-bs-toggle="tooltip" data-bs-placement="top" matTooltip="Recharger " matTooltipPosition="above"><i
       class="feather icon-rotate-ccw feather-rotate-ccw"></i></a>
     </li>
     <li>
@@ -36,10 +36,7 @@
     <a [routerLink] = "routes.addProduct" class="btn btn-added"><i class="feather icon-plus-circle me-2"></i>Add New
   Product</a>
 </div>
-<div class="page-btn import">
-  <a href="javascript:void(0);" class="btn btn-added color" data-bs-toggle="modal" data-bs-target="#view-notes"><i
-  class="feather icon-download me-2"></i>Import Product</a>
-</div>
+
 </div>
 
 <!-- /product list -->
@@ -53,7 +50,7 @@
           <div class="dataTables_filter">
             <label>
               <input [(ngModel)]="searchDataValue" [ngModelOptions]="{standalone: true}" [ngModelOptions]="{standalone: true}" (ngModelChange)="searchData(searchDataValue)"
-                type="search" class="form-control" placeholder="Search..." />
+                type="search" class="form-control" placeholder="Rechercher..." />
               </label>
             </div>
           </div>
@@ -161,19 +158,19 @@
                   <span class="checkmarks"></span>
                 </label>
               </th>
-              <th mat-sort-header="product">Product</th>
-              <th mat-sort-header="SKU">SKU</th>
+              <th mat-sort-header="product">Produit</th>
+              <th mat-sort-header="SKU">Id</th>
               <th mat-sort-header="category">Category</th>
-              <th mat-sort-header="brand">Brand</th>
-              <th mat-sort-header="price">Price</th>
-              <th mat-sort-header="unit">Unit</th>
+              <th mat-sort-header="brand">Marque</th>
+              <th mat-sort-header="price">Prix</th>
+              
               <th mat-sort-header="qty">Qty</th>
               <th mat-sort-header="createdBy">Created by</th>
               <th class="no-sort">Action</th>
             </tr>
           </thead>
           <tbody>
-            @for (data of tableData; track data) {
+            @for (data of products; track data) {
               <tr>
                 <td>
                   <label class="checkboxs">
@@ -184,17 +181,17 @@
                 <td>
                   <div class="productimgname">
                     <a href="javascript:void(0);" class="product-img stock-img">
-                      <img [src]="data.img1" alt="product">
+                     
                     </a>
-                    <a href="javascript:void(0);">{{data.product}} </a>
+                    <a href="javascript:void(0);">{{data.name}} </a>
                   </div>
                 </td>
-                <td>{{data.SKU}} </td>
-                <td>{{data.category}}</td>
+                <td>{{data.id}} </td>
+                <td>{{data.category.name}}</td>
                 <td>{{data.brand}}</td>
                 <td>{{data.price}}</td>
-                <td>{{data.unit}}</td>
-                <td>{{data.qty}}</td>
+              
+                <td>{{data.stockQuantity}}</td>
                 <td>
                   <div class="userimgname">
                     <a href="javascript:void(0);" class="product-img">
@@ -208,10 +205,10 @@
                     <a class="me-2 edit-icon  p-2" [routerLink] = "routes.productDetails">
                       <i class="feather icon-eye feather-eye"></i>
                     </a>
-                    <a class="me-2 p-2" [routerLink] = "routes.editProduct">
+                    <a class="me-2 p-2" href="javascript:void(0);" (click)="editProduct(data)">
                       <i class="feather icon-edit feather-edit"></i>
                     </a>
-                    <a class="confirm-text p-2" href="javascript:void(0);" (click)=confirmColor()>
+                    <a class="me-2 p-2" href="javascript:void(0);" (click)=confirmColor()>
                       <i class="feather icon-trash-2 feather-trash-2"></i>
                     </a>
                   </div>

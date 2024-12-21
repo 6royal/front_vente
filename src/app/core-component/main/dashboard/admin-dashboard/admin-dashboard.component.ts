@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import {
@@ -50,7 +50,7 @@ export type ChartOptions = {
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss'
 })
-export class AdminDashboardComponent {
+export class AdminDashboardComponent implements OnInit {
   initChecked = false;
   public routes = routes;
   public currency!: string;
@@ -129,6 +129,10 @@ export class AdminDashboardComponent {
       });
     });
   }
+  ngOnInit(): void {
+   this.getTotalSale();
+   this.getClientParType();
+  }
   // pagination variables
   public tableData: Array<expiredproduct> = [];
   public pageSize = 10;
@@ -138,7 +142,26 @@ export class AdminDashboardComponent {
   dataSource!: MatTableDataSource<expiredproduct>;
   public searchDataValue = '';
   //** / pagination variables
+  totalSales:number =0
+  clientParType:any[]= []
 
+
+  private getTotalSale(){
+    this.data.getTotalSales().subscribe(data=>{
+      this.totalSales=data;
+      console.log(this.totalSales)
+    })
+   }
+
+
+   private getClientParType(){
+    this.data.getClientParType().subscribe(data=>{
+      this.clientParType = Object.entries(data).map(([key, value]) => ({
+        type: key,
+        count: value
+      }));
+    })
+   }
  
 
   private getTableData(pageOption: pageSelection): void {

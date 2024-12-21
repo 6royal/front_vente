@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { SidebarService, routes } from 'src/app/core/core.index';
+import { Component, OnInit } from '@angular/core';
+import { DataService, SidebarService, routes } from 'src/app/core/core.index';
 import { NavigationEnd, Router, Event as RouterEvent } from '@angular/router';
 import { url } from 'src/app/shared/model/sidebar.model';
 
@@ -20,7 +20,7 @@ interface SubMenu {
   templateUrl: './sidebar-one.component.html',
   styleUrls: ['./sidebar-one.component.scss'],
 })
-export class SidebarOneComponent {
+export class SidebarOneComponent implements OnInit {
   public routes = routes;
   base = '';
   page = '';
@@ -32,7 +32,8 @@ export class SidebarOneComponent {
   constructor(
     private Router: Router,
     private sidebar: SidebarService,
-    private router: Router
+    private router: Router,
+    private data: DataService,
   ) {
     router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationEnd) {
@@ -42,6 +43,7 @@ export class SidebarOneComponent {
     this.getRoutes(this.router);
     this.side_bar_data = this.sidebar.sidebarData1;
   }
+ 
 
   private getRoutes(route: url): void {
     const splitVal = route.url.split('/');
@@ -60,6 +62,7 @@ export class SidebarOneComponent {
 
   expandSubMenus(menu: MenuItem): void {
     sessionStorage.setItem('menuValue', menu.menuValue);
+    menu.showSubRoute = !menu.showSubRoute;  // Forcer l'affichage du sous-menu pour tester
     this.side_bar_data.forEach((mainMenus: MenuItem) => {
       mainMenus.menu.forEach((resMenu: SubMenu) => {
         if (resMenu.menuValue === menu.menuValue) {
@@ -101,5 +104,37 @@ export class SidebarOneComponent {
   }
   multiLevelThree() {
     this.multiLevel3 = !this.multiLevel3;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user:any
+
+  getUSer(){
+    this.data.getUser().subscribe(data=>{
+      this.user=data
+
+      this.getFilteredMenuItems();
+    })
+  }
+  ngOnInit(): void {
+    this.getUSer();
+    
+  }
+  getFilteredMenuItems() {
+    
+    if (this.user.role ==="Manager") {
+      console.log(this.side_bar_data)
+      
+      return this.side_bar_data; 
+       // Afficher tous les menus pour l'admin
+    }
+    // Si l'utilisateur est un utilisateur normal, on affiche seulement le menu "vente"
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this.side_bar_data= this.side_bar_data.filter((mainMenu: any) => 
+      mainMenu.menu.some((menu: MenuItem) => menu.menuValue === 'Effectuer une vente'));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return this.side_bar_data.filter((mainMenu: any) => 
+      mainMenu.menu.some((menu: MenuItem) => menu.menuValue === 'Effectuer une vente') // Filtrer pour inclure uniquement "Vente"
+    );
   }
 }

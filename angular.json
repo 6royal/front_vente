@@ -32,6 +32,7 @@
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.rtl.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/assets/css/animate.css",
               "src/assets/icons/ionic/ionicons.css",
               "src/assets/icons/material/materialdesignicons.css",

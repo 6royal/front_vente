@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router, Event as RouterEvent } from '@angular/router';
-import { CommonService, SidebarService } from 'src/app/core/core.index';
+import { CommonService, DataService, SidebarService } from 'src/app/core/core.index';
 import { WebstorgeService } from 'src/app/shared/webstorge.service';
 import { routes } from 'src/app/core/helpers/routes';
 
@@ -9,7 +9,7 @@ import { routes } from 'src/app/core/helpers/routes';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent  {
+export class HeaderComponent implements OnInit  {
   public routes = routes;
   activePath = '';
   showSearch = false;
@@ -27,7 +27,8 @@ export class HeaderComponent  {
     private Router: Router,
     private common: CommonService,
     private sidebar: SidebarService,
-    private webStorage: WebstorgeService
+    private webStorage: WebstorgeService,
+    private data : DataService
   ) {
     this.activePath = this.Router.url.split('/')[2];
     this.Router.events.subscribe((data: RouterEvent) => {
@@ -52,7 +53,7 @@ export class HeaderComponent  {
       this.last = last;
     });
   }
-
+ 
 
 
   public logout(): void {
@@ -82,4 +83,20 @@ export class HeaderComponent  {
       document.exitFullscreen();
     }
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user:any
+
+  getUSer(){
+    this.data.getUser().subscribe(data=>{
+      this.user=data
+      console.log(this.user)
+    })
+  }
+
+  ngOnInit(): void {
+   this.getUSer();
+  }
+
+
 }

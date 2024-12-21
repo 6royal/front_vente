@@ -20,6 +20,20 @@ export class ProdutService {
     })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  updateProduct(product: any): Observable<any> {
+    return this.http.put(`${this.BASE_URL}api/products/update/${product.id}`, product,{
+      headers : this.createAuthorizationHeader(),
+    });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  createProduct(product:any):Observable<any>{
+    return this.http.post(this.BASE_URL+"api/products/save",product,{
+      headers : this.createAuthorizationHeader(),
+    })  
+  }
+
   private createAuthorizationHeader(): HttpHeaders | undefined {
       const jwtToken = localStorage.getItem('jwt');
       if (jwtToken) {

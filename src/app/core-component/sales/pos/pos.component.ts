@@ -10,17 +10,13 @@ import { PaginationService, tablePageSize } from 'src/app/shared/shared.index';
 import Swal from 'sweetalert2';
 import { BrowserQRCodeReader } from '@zxing/library';
 import { ProdutService } from 'src/app/service/product/produt.service';
+import { Product } from 'src/app/classe/product';
+import { OrderService } from 'src/app/service/order/order.service';
+
 interface data {
   value: string;
 }
-export interface Product {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  qty: number;
-  image: string;
-}
+
 
 
 @Component({
@@ -34,10 +30,8 @@ export class PosComponent {
    today = new Date(); // Récupération de la date du jour
   formattedDate = this.today.toISOString().split('T')[0];
 
-  products: Product[] = [
-    { id: 1, name: 'IPhone 14 64GB', category: 'Mobiles', price: 15800, qty: 30, image: 'assets/img/products/pos-product-01.png' },
-    { id: 2, name: 'IPhone 16 64GB', category: 'Mobiles', price: 20800, qty: 30, image: 'assets/img/products/pos-product-01.png' },
-  ];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  products: any[] = [];
 
   selectedValue3 = 5; // Default GST in percentage
   selectedValue4 = 15; // Default shipping cost
@@ -65,9 +59,20 @@ export class PosComponent {
   cartProducts: Product[] = [];
 
   allProduct(){
+    this.productService.getAllProduct().subscribe(data=>{
+      this.products=data;
+      console.log(this.products)
+    }
 
+    )
   }
-
+  
+  submitOrder():void{
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    
+      
+    }
+  
   addToCart(product: Product): void {
     const existingProduct = this.cartProducts.find(item => item.id === product.id);
     if (existingProduct) {
@@ -127,6 +132,7 @@ generateBarcode(data: string, elementId: string) {
       console.error('Erreur lors de la génération du code-barres', error);
     });
 }
+
 
 // Appel de la fonction pour générer le code-barres
 
@@ -257,7 +263,8 @@ generateBarcode(data: string, elementId: string) {
     private pagination: PaginationService,
     private router: Router,
     private sidebar: SidebarService,
-    private productService:ProdutService
+    private productService:ProdutService,
+    private orderService :OrderService,
   ) {
     this.data.getPosPurchase().subscribe((apiRes: apiResultFormat) => {
       this.totalData = apiRes.totalData;
@@ -374,6 +381,13 @@ generateBarcode(data: string, elementId: string) {
     this.dataSource.filter = value.trim().toLowerCase();
     this.tableData = this.dataSource.filteredData;
   }
+  isCollapsed: boolean = false;
+  toggleCollapse() {
+    this.sidebar.toggleCollapse();
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+
   confirmColor() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -384,19 +398,47 @@ generateBarcode(data: string, elementId: string) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      confirmButtonText: 'Yes, delete it!',
+      title: 'Vous etes sure?',
+      text: "De vouloir valider la commande",
+      confirmButtonText: 'Oui, valider!',
       showCancelButton: true,
-      cancelButtonText: 'Cancel',
+      cancelButtonText: 'anuler',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        const orderData = {
+          user:{"id":2},
+          totalAmount:this.total,
+          status:'Paid',
+          orderDate: new Date(), // Date de commande
+            items: this.cartProducts.map((product) => ({
+              product : {"id":product.id},
+              quantity: product.qty,
+              price: product.price,
+            })),
+          };
+    
+          this.orderService.createOrder(orderData).subscribe(
+            {
+              next:(response)=>{
+                console.log('commande creer avec succes',response),
+                swalWithBootstrapButtons.fire(
+                  'valider!',
+                  'Votre commande a bien eté enregistre',
+                  'success'
+                ).then(()=>{
+                  location.reload();
+                })
+                
+    
+              },error:(err)=>{
+                console.log("error lors de la soumission de la commande",err),
+                alert("erreur lors de la soummission de la commande")
+    
+              }
+            }
+          )
+        
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {
@@ -410,6 +452,7 @@ generateBarcode(data: string, elementId: string) {
   }
    ngOnInit(): void {
    window.dispatchEvent(new Event('resize'));
+   this.allProduct();
    this.generateBarcode("this.transactionID.toString()",'barcode-container');
   }
 }

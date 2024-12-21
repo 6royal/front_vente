@@ -5,7 +5,7 @@
         <ul>
           @for (mainTittle of side_bar_data; track mainTittle) {
           <li class="submenu-open">
-            <h6 class="submenu-hdr">{{ mainTittle.tittle }}</h6>
+            
             <ul>
               @for (menu of mainTittle?.menu; track menu) {
               @if (menu?.hasSubRoute === false) {

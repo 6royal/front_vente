@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -9,6 +9,7 @@ import {
   routes,
   SidebarService,
 } from 'src/app/core/core.index';
+import { ProdutService } from 'src/app/service/product/produt.service';
 import { productList } from 'src/app/shared/model/page.model';
 import { PaginationService, tablePageSize } from 'src/app/shared/shared.index';
 import Swal from 'sweetalert2';
@@ -17,7 +18,7 @@ import Swal from 'sweetalert2';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   initChecked = false;
   selectedValue1 = '';
   selectedValue2 = '';
@@ -62,6 +63,7 @@ export class ProductListComponent {
     private pagination: PaginationService,
     private router: Router,
     private sidebar: SidebarService,
+    private produitService : ProdutService
   ) {
     this.data.getDataTable().subscribe((apiRes: apiResultFormat) => {
       this.totalData = apiRes.totalData;
@@ -73,6 +75,7 @@ export class ProductListComponent {
       });
     });
   }
+ 
 
   private getTableData(pageOption: pageSelection): void {
     this.data.getProductList().subscribe((apiRes: apiResultFormat) => {
@@ -168,5 +171,24 @@ export class ProductListComponent {
       });
     }
   }
- 
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  products: any[] = [];
+  allProduct(){
+    this.produitService.getAllProduct().subscribe(data=>{
+      this.products=data;
+      console.log(this.products)
+    }
+
+    )   
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  editProduct(product: any): void {
+    this.router.navigate([routes.editProduct], {
+      state: { product: product }, // Transmet les données via le `Router`
+    });
+  }
+  ngOnInit(): void {
+   this.allProduct()
+  }
 }

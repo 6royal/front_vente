@@ -25,18 +25,18 @@
         'main-chat-blk': page === 'chat',
       }" [class.header-collapse]="isCollapsed">
     <app-header></app-header>
-    @if (page !== 'pos') {
+    @if (page !== '') {
     <app-sidebar-one> </app-sidebar-one>
     }
     @if (layoutMode === 'collapsed_mode') {
-    <app-sidebar-two [ngClass]="{'d-none': page === 'pos'}"></app-sidebar-two>
+    <app-sidebar-two [ngClass]="{'d-none': page === ''}"></app-sidebar-two>
     }
     @if (layoutMode === 'horizontal_mode' || layoutMode === 'modern_mode') {
-    <app-sidebar-three [ngClass]="{'d-none': page === 'pos'}"></app-sidebar-three>
+    <app-sidebar-three [ngClass]="{'d-none': page === ''}"></app-sidebar-three>
     }
     <div class="page-wrapper" [ngClass]="{
             'ms-0': sideBaractivePath === true,
-            'pos-pg-wrapper' : page === 'pos',
+            'pos-pg-wrapper' : page === '',
             'cardhead': page === 'ui-counter',
             'notes-page-wrapper' : page === 'file-archived' || page === 'file-document' || page === 'file-archived' || page === 'file-favourites' || page === 'file-recent' || page === 'file-manager'||page === 'file-shared' || page === 'todo' || page === 'notes' || page === 'qrcode' || page === 'file-manager-deleted',
             'file-manager': page === 'file-shared' || page === 'file-archived' || page === 'file-document' || page === 'file-archived' || page === 'file-favourites' || page === 'file-recent' || page === 'file-manager' || page === 'file-manager-deleted',
@@ -50,7 +50,7 @@
       </div>
     </div>
     <!-- Main Wrapper -->
-    <app-layout [ngClass]="{'d-none': page === 'pos'}"></app-layout>
+    <app-layout [ngClass]="{'d-none': page === ''}"></app-layout>
   </div>
   }
   <!-- Main Wrapper -->

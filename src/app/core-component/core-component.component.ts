@@ -65,7 +65,7 @@ export class CoreComponentComponent implements OnInit {
       }
     });
     this.sidebar.sideBarPosition.subscribe((res: string) => {
-      if (res == 'true' && this.page !== 'pos') {
+      if (res == 'true' && this.page !== '') {
         this.miniSidebar = true;
       } else {
         this.miniSidebar = false;

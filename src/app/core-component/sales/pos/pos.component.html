@@ -143,13 +143,13 @@
                       <span><i class="feather icon-check feather-16"></i></span>
                     </a>
                     <h6 class="cat-name">
-                      <a href="javascript:void(0);">{{ product.category }}</a>
+                      <a href="javascript:void(0);">{{ product.category.name }}</a>
                     </h6>
                     <h6 class="product-name">
                       <a href="javascript:void(0);">{{ product.name }}</a>
                     </h6>
                     <div class="d-flex align-items-center justify-content-between price">
-                      <span>{{ product.qty }} Pcs</span>
+                      <span>{{ product.stockQuantity}} Pcs</span>
                       <p>${{ product.price }}</p>
                     </div>
                   </div>
@@ -476,7 +476,7 @@
             <div *ngFor="let cartProduct of cartProducts; let i = index" class="product-list d-flex align-items-center justify-content-between">
               <div class="d-flex align-items-center product-info">
                 <a href="javascript:void(0);" class="img-bg">
-                  <img [src]="cartProduct.image" [alt]="cartProduct.name" />
+                  <img [src]="" [alt]="cartProduct.name" />
                 </a>
                 <div class="info">
                   <span>ID{{ cartProduct.id }}</span>
@@ -509,6 +509,7 @@
             <div class="row">
               <div class="col-12 col-sm-4">
                 <div class="input-block">
+                  
                   <label>Order Tax</label>
                   <mat-select [(ngModel)]="selectedValue3" [ngModelOptions]="{ standalone: true }" class="select">
                     <mat-option *ngFor="let data of [5, 10, 15]" [value]="data">
@@ -743,17 +744,11 @@
             </tr>
           </tbody>
         </table>
-        <div class="text-center invoice-bar">
-          <p>
-            **VAT against this challan is payable through central registration.
-            Thank you for your business!
-          </p>
-          <a href="javascript:void(0);">
-            <img src="assets/img/barcode/barcode-03.jpg" alt="Barcode" />
-          </a>
-          <p>Sale 31</p>
-          <p>Thank You For Shopping With Us. Please Come Again</p>
-          <a href="javascript:void(0);" class="btn btn-primary" (click)="printReceipt()">Print Receipt</a>
+        <div class="text-center invoice-bar ">
+         
+          
+          <p>Merci pour votre confiance a très bientôt</p>
+          <a href="javascript:void(0);" class="btn btn-success" (click)="confirmColor()">Valider la commande</a>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { apiResultFormat } from '../../models/models';
@@ -730,4 +730,58 @@ export class DataService {
       })
     );
   }
+
+  private BASE_URL = 'http://localhost:8080/'
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public getTotalSales():Observable<any>{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return  this.http.get<any[]>(this.BASE_URL +"api/order/totalSales",{
+      headers : this.createAuthorizationHeader(),
+
+
+    })
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public getClientParType():Observable<any>{
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return this.http.get<any[]>(this.BASE_URL+"api/clients/countType",{
+        headers : this.createAuthorizationHeader(),
+      })
+  }
+
+
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public getAllUser():Observable<any>{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return this.http.get<any[]>(this.BASE_URL+"api/clients/users" ,{
+      headers:this.createAuthorizationHeader(),
+    })
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public getAllCategory():Observable<any>{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return this.http.get<any[]>(this.BASE_URL+"api/category" ,{
+      headers:this.createAuthorizationHeader(),
+    })
+  }
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ getUser():Observable<any>{
+  const email= localStorage.getItem("userEmail")
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return this.http.get<any[]>(this.BASE_URL+"api/clients/users/search?email="+email,{
+    headers:this.createAuthorizationHeader(),
+  })
+ }
+  private createAuthorizationHeader(): HttpHeaders | undefined {
+        const jwtToken = localStorage.getItem('jwt');
+        if (jwtToken) {
+          console.log('JWT token found in local storage:', jwtToken);
+          return new HttpHeaders().set('Authorization', `Bearer ${jwtToken}`);
+        } else {
+          console.log('JWT token not found in local storage');
+          return undefined;
+        }
+      }
 }

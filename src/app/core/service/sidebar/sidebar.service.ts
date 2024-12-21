@@ -50,7 +50,7 @@ export class SidebarService {
 
   public sidebarData1 = [
     {
-      tittle: 'Main',
+      tittle: 'Principal',
       showAsTab: false,
       separateRoute: false,
       hasSubRoute: false,
@@ -60,75 +60,36 @@ export class SidebarService {
           menuValue: 'Dashboard',
           hasSubRoute: false,
           showSubRoute: false,
-          icon: 'grid',
-          
-          route: routes.adminDashboard,
-
-          
+          icon: 'grid',          
+          route: routes.adminDashboard,         
         },
         
       ],
-    },
-    
-   
+    }, 
 
     {
-      tittle: 'Sales',
+      tittle: 'Ventes',
       showAsTab: true,
       separateRoute: false,
       menu: [
         {
-          menuValue: 'Sales',
+          menuValue: 'Effectuer une vente',
           icon: 'shopping-cart',
-          route: routes.salesList,
-          hasSubRoute: false,
-          showSubRoute: false,
-        },
-        {
-          menuValue: 'Sales Return',
-          icon: 'copy',
-          route: routes.salesReturn,
-          hasSubRoute: false,
-          showSubRoute: false,
-        },
-        {
-          menuValue: 'Quotation',
-          icon: 'save',
-          route: routes.quotationList,
-          hasSubRoute: false,
-          showSubRoute: false,
-        },
-        {
-          menuValue: 'POS',
-          icon: 'hard-drive',
           route: routes.pos,
           hasSubRoute: false,
           showSubRoute: false,
         },
-      ],
-    },
-
-    
-
-    
-    {
-      tittle: 'HRM',
-      showAsTab: true,
-      separateRoute: false,
-      menu: [
         {
-          menuValue: 'Employees',
-          icon: 'user',
-          route: routes.employeesGrid,
+          menuValue: 'Liste des ventes',
+          icon: 'hard-drive',
+          route: routes.salesList,
           hasSubRoute: false,
           showSubRoute: false,
         },
-       
-        
-        
-        
+                    
       ],
     },
+      
     {
       tittle: 'Reports',
       showAsTab: true,
@@ -145,17 +106,53 @@ export class SidebarService {
       ],
     },
     {
-      tittle: 'User Management',
+      tittle: 'Gestion des utlisateurs',
       showAsTab: true,
       separateRoute: false,
       menu: [
         {
-          menuValue: 'Users',
+          menuValue: 'employer',
           icon: 'user-check',
           route: routes.users,
           hasSubRoute: false,
           showSubRoute: false,
         },
+        
+      ],
+    },
+    
+    {
+      tittle: 'Gestion de Stock',
+      showAsTab: true,
+      separateRoute: false,
+      menu: [
+        {
+          menuValue: 'Products',
+          icon: 'box',
+          route: routes.productList,
+          hasSubRoute: false,
+          showSubRoute: false,
+        },
+        {
+          menuValue: 'Create Product',
+          icon: 'plus-square',
+          route: routes.addProduct,
+          hasSubRoute: false,
+          showSubRoute: false,
+        },
+       
+        
+        {
+          menuValue: 'Category',
+          icon: 'codepen',
+          hasSubRoute: false,
+          showSubRoute: false,
+          route: routes.categoryList,
+          subRoutes: [],
+        },
+        
+       
+        
         
       ],
     },
@@ -1678,7 +1675,7 @@ public sidebarData3 =[
             subRoutes: [],
           },
           {
-            tittle: 'POS',
+            tittle: 'Effectuer une vente',
             hasSubRoute: false,
             showSubRoute: false,
             route: routes.pos,

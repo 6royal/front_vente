@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { User, Settings} from 'angular-feather/icons';
+import { FeatherModule } from 'angular-feather';
 
 
 const icons = {

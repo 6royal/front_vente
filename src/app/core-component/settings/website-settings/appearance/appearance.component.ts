@@ -25,7 +25,7 @@ export class AppearanceComponent {
     {value: 'Large - 250px'},
   ];
   selectedList2: data[] = [
-    {value: 'Nunito'},
+    {value: 'poppins'},
     {value: 'Poppins'},
   ];
   isCollapsed: boolean = false;

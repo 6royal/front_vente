@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { SidebarService, routes } from 'src/app/core/core.index';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DataService, SidebarService, routes } from 'src/app/core/core.index';
+import { ProdutService } from 'src/app/service/product/produt.service';
+import Swal from 'sweetalert2';
 interface data {
   value: string;
 }
@@ -8,7 +12,7 @@ interface data {
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.scss',
 })
-export class EditProductComponent {
+export class EditProductComponent implements OnInit{
   public routes = routes
   public selectedValue1 = '';
   public selectedValue2 = '';
@@ -82,14 +86,117 @@ export class EditProductComponent {
     { value: 'Percentage' },
     { value: 'Early Payment' },
   ];
-  constructor(private sidebar: SidebarService) {}
+  constructor(private sidebar: SidebarService, private fb:FormBuilder ,private data : DataService, private produitService: ProdutService,private router: Router,)  {}
+  ngOnInit(): void {
+    this.getAllCategory();
+    this.productData = history.state.product;
 
+    // Initialiser le formulaire avec les données du produit
+    this.productForm = this.fb.group({
+      name: [this.productData?.name || '', Validators.required],
+      id: [{ value: this.productData?.id || '', disabled: true }], // Champ désactivé si non modifiable
+      category:[this.productData?.category?.id || '', Validators.required],
+      description: [this.productData?.description || '', [Validators.required, Validators.maxLength(60)]],
+  
+      price: [this.productData?.price || '', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      stockQuantity: [this.productData?.stockQuantity || '', [Validators.required, Validators.min(0)]],
+     
+    });
+  }
+  saveChanges(): void {
+    if (this.productForm.valid) {
+      const formData = this.productForm.getRawValue(); // Inclut les champs désactivés
+      formData.category = {id:formData.category}
+      console.log(formData);
+  
+      // Appeler le service pour mettre à jour le produit
+      this.produitService.updateProduct(formData).subscribe({
+        next: (response) => {
+          console.log('Produit mis à jour avec succès', response);
+        },
+        error: (error) => {
+          console.error('Erreur lors de la mise à jour du produit', error);
+        },
+      });
+    } else {
+      console.error('Le formulaire contient des erreurs');
+    } 
+  }
+  productForm!: FormGroup;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  productData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  category : any;
   public removeImg(index: number) {
     this.image[index] = !this.image[index];
+  }  
+
+  getAllCategory(){
+      this.data.getAllCategory().subscribe(data=>{
+        this.category = data
+      })
   }
   isCollapsed: boolean = false;
   toggleCollapse() {
     this.sidebar.toggleCollapse();
     this.isCollapsed = !this.isCollapsed;
   }
+  confirmColor() {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: ' btn btn-success',
+          cancelButton: 'me-2 btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Etes Vous Sure ?',
+        text: "De Vouloir Modifier Le Produit",
+        confirmButtonText: 'Oui',
+        showCancelButton: true,
+        cancelButtonText: 'Non',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          if (this.productForm.valid) {
+            const formData = this.productForm.getRawValue(); // Inclut les champs désactivés
+            formData.category = {id:formData.category}
+            console.log(formData);
+        
+            // Appeler le service pour mettre à jour le produit
+            this.produitService.updateProduct(formData).subscribe({
+              next: (response) => {
+                console.log('Produit mis à jour avec succès', response);
+                swalWithBootstrapButtons.fire(
+                  'Succes!',
+                  'Le Produit a Bien été Mis a Jour',
+                  'success'
+                ).then((result) => {
+                  // Vérifiez si l'utilisateur a cliqué sur "OK" ou sur un autre bouton
+                  if (result) {
+                    // Rediriger vers une autre page
+                    this.router.navigate([routes.productList]) // Remplacez '/nouvelle-page' par l'URL de votre choix
+                  }});
+              },
+              error: (error) => {
+                console.error('Erreur lors de la mise à jour du produit', error);
+              },
+            });
+          } else {
+            console.error('Le formulaire contient des erreurs');
+          } 
+         
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Fermer',
+            'Vous Avez Abandonner ',
+            'error'
+          )
+        }
+      })
+    }
 }
