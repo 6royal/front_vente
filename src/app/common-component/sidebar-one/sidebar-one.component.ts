@@ -43,7 +43,9 @@ export class SidebarOneComponent implements OnInit {
     this.getRoutes(this.router);
     this.side_bar_data = this.sidebar.sidebarData1;
   }
- 
+  ngOnInit(): void {
+    this.getUSer(); 
+  }
 
   private getRoutes(route: url): void {
     const splitVal = route.url.split('/');
@@ -73,6 +75,7 @@ export class SidebarOneComponent implements OnInit {
       });
     });
   }
+  
 
   openMenuItem: MenuItem | null = null;
   openSubmenuOneItem: SubMenu[] | null = null;
@@ -113,25 +116,22 @@ export class SidebarOneComponent implements OnInit {
     this.data.getUser().subscribe(data=>{
       this.user=data
 
-      this.getFilteredMenuItems();
+      this.getFilteredMenuItems()
     })
   }
-  ngOnInit(): void {
-    this.getUSer();
-    
-  }
+
   getFilteredMenuItems() {
     
     if (this.user.role ==="Manager") {
-      console.log(this.side_bar_data)
       
-      return this.side_bar_data; 
-       // Afficher tous les menus pour l'admin
+      return this.side_bar_data;  // Afficher tous les menus pour l'admin
     }
     // Si l'utilisateur est un utilisateur normal, on affiche seulement le menu "vente"
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.side_bar_data= this.side_bar_data.filter((mainMenu: any) => 
-      mainMenu.menu.some((menu: MenuItem) => menu.menuValue === 'Effectuer une vente'));
+    this.side_bar_data=this.side_bar_data.filter((mainMenu: any) => 
+      mainMenu.menu.some((menu: MenuItem) => menu.menuValue === 'Effectuer une vente') // Filtrer pour inclure uniquement "Vente"
+    );
+    console.log(this.side_bar_data)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.side_bar_data.filter((mainMenu: any) => 
       mainMenu.menu.some((menu: MenuItem) => menu.menuValue === 'Effectuer une vente') // Filtrer pour inclure uniquement "Vente"
