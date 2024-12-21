@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarOneComponent } from './sidebar-one.component';
+import { SidebarOneComponent } from '../../../../docs/sidebar-one.component';
 
 describe('SidebarOneComponent', () => {
   let component: SidebarOneComponent;

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CoreComponentRoutingModule } from './core-component-routing.module';
 import { CoreComponentComponent } from './core-component.component';
 
-import { SidebarOneComponent } from '../common-component/sidebar-one/sidebar-one.component';
+import { SidebarOneComponent } from '../../../docs/sidebar-one.component';
 import { SidebarTwoComponent } from '../common-component/sidebar-two/sidebar-two.component';
 import { SidebarThreeComponent } from '../common-component/sidebar-three/sidebar-three.component';
 import { HeaderComponent } from '../common-component/header/header.component';
