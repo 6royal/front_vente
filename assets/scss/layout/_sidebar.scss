@@ -12,6 +12,32 @@
     border-left: 0px solid $gray-400;
     width: 16.5rem;
     left: 0;
+
+    // Responsive adjustments for medium screens
+    @include respond-below(custom991) {
+        margin-right: -575px;
+        @include transition(all 0.4s ease);
+        z-index: 5;
+    }
+
+    // Responsive adjustments for small screens
+    @media (max-width: 768px) {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        z-index: 9999;
+    }
+
+    // Adjustments for extra-small screens
+    @media (max-width: 576px) {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        position: absolute;
+    }
     @include respond-below(custom991) {
         margin-right: -575px;
         @include transition(all 0.4s ease);
@@ -40,7 +66,7 @@
                         color: $white;
                     }
                     svg {
-                        color: #E645AF;
+                        color: #ff0055;
                         font-weight: 500;
                     }
                 }
@@ -70,21 +96,21 @@
                     }
                     &:hover{
                         background: rgba(254, 159, 67, 0.08);
-                        color: #E645AF;
+                        color: #ff0055;
                         border-radius: 5px;
                         img {
                             filter: invert(72%) sepia(76%) saturate(1430%) hue-rotate(327deg) brightness(103%) contrast(101%);
                         }
                         span{
-                            color: #E645AF;
+                            color: #ff0055;
                         }
                         svg{
-                            color: #E645AF;
+                            color: #ff0055;
                         }
                     }
                     &.active{
                         background: rgba(254, 159, 67, 0.08);
-                        color: #E645AF;
+                        color: #ff0055;
                         font-weight: 600;
                         border-radius: 5px;
                         svg{
@@ -94,14 +120,14 @@
                             filter: invert(72%) sepia(76%) saturate(1430%) hue-rotate(327deg) brightness(103%) contrast(101%);
                         }
                         span{
-                            color: #E645AF;
+                            color: #ff0055;
                             font-weight: 600;
                             font-size: 17;
                         }
                         .menu-arrow{
                             background: #FFEDDC;
                             &::before{
-                                border-color: #E645AF;
+                                border-color: #ff0055;
                             }
                         }
                     }
@@ -119,7 +145,7 @@
                             filter: invert(72%) sepia(76%) saturate(1430%) hue-rotate(327deg) brightness(103%) contrast(101%);
                         }
                         span{
-                            color: #E645AF;
+                            color: #ff0055;
                         }
                     }
                 }
@@ -141,7 +167,7 @@
                                    color: $secondary;
                                    font-weight: 500;
                                    &:after{
-                                    background: #E645AF;
+                                    background: #ff0055;
                                     border: 2px solid #FDB;
                                    }
                                }
@@ -157,7 +183,7 @@
                                &:hover{
                                    color:$primary;
                                    &:after{
-                                    background: #E645AF;
+                                    background: #ff0055;
                                     border: 2px solid #FDB;
                                    }
                                }
@@ -204,14 +230,14 @@
                                        }
                                    }
                                    &:after{
-                                    background: #E645AF;
+                                    background: #ff0055;
                                     border: 2px solid #FDB;
                                    }
                                }
                                &:hover{
                                    color:$primary;
                                    &:after{
-                                    background: #E645AF;
+                                    background: #ff0055;
                                     border: 2px solid #FDB;
                                    }
                                    span {
@@ -226,10 +252,10 @@
                        {
                        
                         &.active a{
-                            border-right: #E645AF solid 5px  ;
+                            border-right: #ff0055 solid 5px  ;
                             background: rgba(254, 159, 67, 0.08);
                             border-radius: 5px;
-                            color: #E645AF;
+                            color: #ff0055;
                             font-weight: 500;
                             span {
                                 font-size: 13.125px;
@@ -264,11 +290,11 @@
             li {
                 &.active{
                     a{
-                        color: #E645AF;
+                        color: #ff0055;
                         font-weight: 500;
                     }
                     svg {
-                        color: #E645AF;
+                        color: #ff0055;
                         font-weight: 500;
                     }
                 }
@@ -276,17 +302,17 @@
                     a {
                         &.active{
                             background: rgba(254, 159, 67, 0.08);
-                            color: #E645AF;
+                            color: #ff0055;
                             border-radius: 5px;
                             font-weight: 500;
                             span{
-                                color: #E645AF;
+                                color: #ff0055;
                                 font-weight: 500;
                             }
                             .menu-arrow{
                                 background: #FFEDDC;
                                 &::before{
-                                    border-color: #E645AF;
+                                    border-color: #ff0055;
                                 }
                             }
                         }
@@ -349,7 +375,7 @@
                             &:hover{
                                 color:$primary;
                                 &:after{
-                                background: #E645AF;
+                                background: #ff0055;
                                 border: 2px solid #FDB;
                                 }
                             }
@@ -737,12 +763,12 @@ body.mini-sidebar{
     }
 }
 .sidebar-overlay {
-    display: none;
+    display: block;
     height: 100%;
     width: 100%;
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.6);
-    @include position(fixed,60px,0,null,null);
+ 
     &.opened {
         display: block;
     }
