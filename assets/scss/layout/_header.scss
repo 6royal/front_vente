@@ -1,14 +1,10 @@
 .header {
     background: $white;
-    border-bottom: 0px solid $gray-400;
+    border-bottom: 1px solid $gray-400;
     height: 66px;
     z-index: 999;
     @include position(fixed,0,0,null,0);
     @include transition(all 0.5s ease);
-    .dashboard-write{
-        font-weight: 600;
-        font-size: 20px
-      }
     .flag-nav {
         > a {
             img {
@@ -52,8 +48,8 @@
         z-index: 1;
         @include margin-padding(null, 0 24px);
         @include transition(all 0.5s ease);
-        border-right: 0px solid $border-color;
-        border-bottom: 0px solid $border-color;
+        border-right: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
         .logo {
             display: inline-block;
             line-height: 0;
@@ -891,7 +887,7 @@ hr{
         justify-content: center;
         -webkit-justify-content: center;
         -ms-flex-pack: center;
-        
+        background: $gray-100;
         border-radius: 6px;
         width: 36px;
         height: 36px;
